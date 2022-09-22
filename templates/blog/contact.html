@@ -1,28 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact</title>
-</head>
+{% block title %}
+<title>Wabi-Sabi Contact</title>
+{% endblock %}
 
-<body>
-    <h1>Contact</h1>
 
-    <form method="POST" action="add">
-        {% csrf_token %}
-        <!-- template variable -->
-        <div>
-            <p>{{form.as_p}}</p>
+{% block content %}
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12 mt-3 offset-md-4 text-center">
+            <h3>CONTACT US</h3>
+
+            <form method="POST" action="add">
+                {% csrf_token %}
+                <!-- template variable -->
+                <div>
+                    <p>{{form.as_p}}</p>
+                </div>
+                <div>
+                    <p>
+                        <button type="submit">submit</button>
+                    </p>
+                </div>
+            </form>
         </div>
-        <div>
-            <p>
-                <button type="submit">submit</button>
-            </p>
-        </div>
-    </form>
-</body>
+    </div>
 
-</html>
+    {% endblock %}

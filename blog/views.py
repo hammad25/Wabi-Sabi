@@ -8,6 +8,11 @@ def home(request):
     return render(request, 'blog/index.html')
 
 
+
+def about_view(request):
+    return render(request, 'blog/about.html')
+
+
 def contact_view(request):
     form = ContactForm()
     context = {
