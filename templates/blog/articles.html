@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'style/pages/articles.css' %}">
+<!-- <link rel="stylesheet" href="{% static 'style/pages/articles.css' %}"> -->
 
 {% block title %}
-<title>Wabi-Sabi Articles</title>
+<title>Wabi-Sabi blog
+</title>
 {% endblock %}
 
 {% block content %}
@@ -18,7 +19,8 @@
                     <div class="card mb-2" style="width:24rem;">
                         <a href="#" class="post-link">
                             <div class="image-container post-container">
-                                <img class="card-img-top" src="{{ post.featured_image.url }}">
+                                <img class="card-img-top" style="height: 477px ;, width: 350pc;"
+                                    src="{{ post.featured_image.url }}">
                                 <!-- <div class="image-flash">
                                     <p class="author">Author: {{ post.author }}</p>
                                 </div> -->
@@ -32,9 +34,12 @@
                                 <div class="heading text-left">
                                     <h3 class="card-title" id="title">{{ post.title }}</h3>
                                 </div>
+                                <div>
+                                    <p>{{ post.excerpt}}</p>
+                                </div>
 
-                                <div class="d-flex justify-content-around">
-                                    {% if user.authenticated %}
+                                {% if request.user.is_authenticated %}
+                                <div class="d-flex justify-content-start">
                                     <div class="thumbs-up">
                                         <p>{{ post.number_of_likes }}<i class="fal fa-thumbs-up"></i></p>
                                     </div>
@@ -44,8 +49,8 @@
                                     <div class="save">
                                         <p><i class="fas fa-bookmark"></i></p>
                                     </div>
-                                    {% endif %}
                                 </div>
+                                {% endif %}
 
 
                             </div>
