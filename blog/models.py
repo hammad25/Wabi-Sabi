@@ -22,8 +22,8 @@ class Post(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="blog_posts"
     )
-    created_on = models.DateTimeField(auto_now_add=True)
-    updated_on = models.DateTimeField(auto_now=True)
+    created_on = models.DateField(auto_now_add=True)
+    updated_on = models.DateField(auto_now=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     featured_image = CloudinaryField('image', default='placeholder')
     excerpt = models.TextField(blank=True)
@@ -46,7 +46,7 @@ class Comment(models.Model):
     name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()
-    created_on = models.DateTimeField(auto_now_add=True)
+    created_on = models.DateField(auto_now_add=True)
 
     class Meta:
         ordering = ["created_on"]
@@ -57,14 +57,17 @@ class Comment(models.Model):
 class Contact(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    query_type = models.CharField(max_length=11, choices=QUERY_TYPE, default=0)
+    query_type = models.IntegerField(choices=QUERY_TYPE, default=0)
     email = models.EmailField()
     message = models.TextField(max_length=500, default="Type your message her" )
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name} contacted you."
 
 
 # Profile
 class FavoritePost(models.Model):
-    ''' Model that define the favorites chatroom database design '''
+    ''' Model that define the favorites post database design '''
 
     class Meta:
         '''Set verbose name'''
