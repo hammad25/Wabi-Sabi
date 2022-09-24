@@ -59,7 +59,7 @@ class Contact(models.Model):
     last_name = models.CharField(max_length=50)
     query_type = models.CharField(max_length=11, choices=QUERY_TYPE, default=0)
     email = models.EmailField()
-    message = models.TextField()
+    message = models.TextField(max_length=500, default="Type your message her" )
 
 
 # Profile

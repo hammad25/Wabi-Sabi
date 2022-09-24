@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Wabi-Sabi</title>
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12 mt-3 offset-md-5 ">
+            <h3>Messenge sent</h3>
+            <p>Thanks for getting intouch</p>
+            <a href="{% url 'home' %}"><button>Return to home</button></a>
+        </div>
+    </div>
+
+
+    {% endblock %}

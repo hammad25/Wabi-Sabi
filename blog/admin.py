@@ -17,9 +17,10 @@ class CommentAdmin(admin.ModelAdmin):
     list_filter = ('created_on', 'post')
     search_fields = ['name', 'body']
 
-
-
-admin.site.register(Contact)
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('first_name', 'last_name', 'email_address', 'contacted_on')
+    readonly_fields = ('contacted_on',)
 
 admin.site.register(Category)
 
