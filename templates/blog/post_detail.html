@@ -27,7 +27,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col card mb-4  mt-3 left  top">
+        <div class="col  mb-4  mt-3 left  top">
             <div class="card-body">
                 <!-- The post content goes inside the card-text. -->
                 <!-- Use the | safe filter inside the template tags -->
@@ -45,28 +45,14 @@
     </div>
 
     <div class="row">
-        <div class="col">
+        <div class="col-1">
             <strong>
-                {% if user.is_authenticated %}
-                <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
-                    {% csrf_token %}
-                    {% if liked %}
-                    <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i
-                            class="fas fa-heart"></i></button>
-                    {% else %}
-                    <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i
-                            class="far fa-heart"></i></button>
-                    {% endif %}
-                </form>
-                {% else %}
                 <span class="text-secondary"><i class="far fa-heart"></i></span>
-                {% endif %}
                 <!-- The number of likes goes before the closing strong tag -->
                 <span class="text-secondary">{{ post.number_of_likes }} </span>
             </strong>
-
         </div>
-        <div class="col">
+        <div class="col-1">
             {% with comments.count as total_comments %}
             <strong class="text-secondary"><i class="far fa-comments"></i>
                 <!-- Our total_comments variable goes before the closing strong tag -->
@@ -77,32 +63,35 @@
 
 </div>
 
-<div class="row">
-    <div class="col-md-8 card mb-4  mt-3 ">
-        <h3>Comments</h3>
-        <hr>
-        <div class="card-body">
-            <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
-            {% for comment in comments %}
-            <div class="comments" style="padding: 10px;">
-                <p class="font-weight-bold">
-                    <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
-                    {{ comment.name }}
-                </p>
-                <p>
-                    <span class=" text-muted font-weight-normal">
-                        <!-- The comment's created date goes here -->
-                        {{ comment.created_on }}
-                    </span>
+<div class="container">
 
-                </p>
-                <!-- The body of the comment goes before the | -->
-                {{ comment.body | linebreaks }}
+    <div class="row">
+        <div class="col-8 offset-2  justify-content-center mb-4  mt-3 ">
+            <h3 class="text-left">Comments</h3>
+            <hr>
+            <div class="card-body">
+                <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
+                {% for comment in comments %}
+                <div class="comments" style="padding: 10px;">
+                    <p class="font-weight-bold">
+                        <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
+                        {{ comment.name }}
+                    </p>
+                    <p>
+                        <span class=" text-muted font-weight-normal">
+                            <!-- The comment's created date goes here -->
+                            {{ comment.created_on }}
+                        </span>
+
+                    </p>
+                    <!-- The body of the comment goes before the | -->
+                    {{ comment.body | linebreaks }}
+                </div>
+                <!-- Our for loop ends here -->
+                {% endfor %}
             </div>
-            <!-- Our for loop ends here -->
-            {% endfor %}
         </div>
-    </div>
 
+    </div>
 </div>
 {% endblock %}

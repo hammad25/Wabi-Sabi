@@ -22,7 +22,7 @@ class PostDetail(View):
         
         return render(
             request,
-            'post_detail.html',
+            'blog/post_detail.html',
             {
                 'post':post,
                 'comments':comments,
