@@ -17,7 +17,7 @@
                 {% for post in post_list %}
                 <div class="col-md-4">
                     <div class="card mb-2" style="width:24rem;">
-                        <a href="#" class="post-link">
+                        <a href="{% url 'post_detail' post.slug %}" class="post-link">
                             <div class="image-container post-container">
                                 <img class="card-img-top" style="height: 477px ;, width: 350pc;"
                                     src="{{ post.featured_image.url }}">
