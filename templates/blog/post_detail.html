@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
+
 {% load static %}
 <!-- <link rel="stylesheet" href="{% static 'style/pages/post.css' %}"> -->
 
 {% block content %}
+{% load crispy_forms_tags %}
+
 <div class="container">
     <div class="row g-0">
         <div class="col-md-6  text-left masthead-text">
@@ -15,7 +18,7 @@
         <h1 class="post-title">{{ post.title }}</h1>
     </div>
     <div class="row">
-        <h5 class="post-excerpt">{{ post.excerpt }}</h5>
+        <p class="post-excerpt">{{ post.excerpt }}</p>
     </div>
     <div class="row">
         <div class="d-none d-md-block col-md-6 masthead-image">
@@ -66,7 +69,7 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-8 offset-2  justify-content-center mb-4  mt-3 ">
+        <div class="col-md-8 offset-2  justify-content-center mb-4  mt-3 ">
             <h3 class="text-left">Comments</h3>
             <hr>
             <div class="card-body">
@@ -78,20 +81,46 @@
                         {{ comment.name }}
                     </p>
                     <p>
-                        <span class=" text-muted font-weight-normal">
+                        <span class=" text-muted small">
                             <!-- The comment's created date goes here -->
                             {{ comment.created_on }}
                         </span>
 
                     </p>
                     <!-- The body of the comment goes before the | -->
-                    {{ comment.body | linebreaks }}
+                    <p>
+                        {{ comment.body | linebreaks }}
+                    </p>
+                    {% if user.is_authenticated %}
+                    {% if comment.name == user.username %}
+                    <button type="button" class="btn  btn-sm float-sm-end">Edit</button>
+                    <button type="button" class="btn  btn-sm float-sm-end">Delete</button>
+                    {% endif %}
+                    {% endif %}
                 </div>
                 <!-- Our for loop ends here -->
                 {% endfor %}
             </div>
         </div>
-
     </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-4 justify-content-center  mx-auto   mt-3">
+            {% if user.is_authenticated %}
+            <h5 class="text-mute">write a comment:</h5>
+            <p>Posting as: {{ user.username }}</p>
+            <form method="POST" style="margin-top: 1.3em;">
+                {{ comment_form | crispy }}
+                {% csrf_token %}
+                <button type="submit" class="btn btn-signup btn-lg">Publish</button>
+            </form>
+            {% else %}
+            <h5> To leave a comment, you must be a member:</h5>
+            <a class="link-primary text-decoration-underline" href="{% url 'account_signup' %}">Sign In</a>
+            {% endif %}
+
+        </div>
+    </div>
+
 </div>
 {% endblock %}
