@@ -20,7 +20,7 @@
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- custom css -->
-    <!-- <link rel="stylesheet" href="{% static 'style/base.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'style/base.css' %}">
     {% block title %}
     <title>Wabi-Sabi</title>
     {% endblock %}
@@ -51,7 +51,7 @@
             <ul class="nav navbar-nav mr-5 w-100 justify-content-end">
                 {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link site-menu-link" href="{}" aria-label="Link to profile page.">Profile</a>
+                    <a class="nav-link site-menu-link" href="" aria-label="Link to profile page.">Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>

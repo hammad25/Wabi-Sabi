@@ -59,7 +59,11 @@ class Contact(models.Model):
     last_name = models.CharField(max_length=50)
     query_type = models.IntegerField(choices=QUERY_TYPE, default=0)
     email = models.EmailField()
-    message = models.TextField(max_length=500, default="Type your message her" )
+    message = models.TextField(default="Type your message her" )
+    created_on = models.DateField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["created_on"]
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} contacted you."

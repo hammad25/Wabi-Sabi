@@ -3,6 +3,7 @@ from django.views import generic, View
 from . forms import ContactForm, CommentForm
 from .models import Post, Comment, Contact
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 
 
 # Create your views here.
@@ -17,7 +18,7 @@ class PostDetail(View):
 
     def get(self, request, slug, *args, **kwargs):
         post = get_object_or_404(Post, slug=slug)
-        comments = post.comments.order_by('created_on')
+        comments = post.comments.order_by('-created_on')
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -41,7 +42,6 @@ class PostDetail(View):
             liked = True
     
         comment_form = CommentForm(data=request.POST)
-
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
             comment.email = request.user.email
@@ -62,6 +62,14 @@ class PostDetail(View):
             },
         )
 
+def delete_comment_confirm(request):
+    return render(request, 'blog/delete_comment_confirm.html')
+
+def delete_comment(request, id, pk):
+    comment = get_object_or_404(Comment,  )
+
+
+
 
 class PostLike(View):
     def post(self, request, slug):
@@ -71,17 +79,9 @@ class PostLike(View):
         else:
             post.likes.add(request.user)
         
-        return HttpResponseRedirect(reverse('post_detail', arg=[slug]))
+        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
-# def BlogPostLike(request, slug):
-#     post = get_object_or_404(BlogPost, id=request.POST.get('blogpost_id'))
-#     if post.likes.filter(id=request.user.id).exists():
-#         post.likes.remove(request.user)
-#     else:
-#         post.likes.add(request.user)
-
-#     return HttpResponseRedirect(reverse('blogpost-detail', args=[str(pk)]))
 
 
 def signup(register):
@@ -96,14 +96,14 @@ def about_view(request):
 def contact_add(request):
     return render(request, 'blog/success.html')
 
+
 def contact_view(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return render(request, 'blog/success.html')
-    form = ContactForm()
-    context = {
-        'form' : form
-    }
-    return render(request, 'blog/contact.html', context)
+    if request.method == "GET":
+        contact_form = ContactForm()
+        context = {'contact_form' : contact_form}
+        return render(request, 'blog/contact.html', context)
+    else:
+        contact_form = ContactForm(request.POST)
+        if contact_form.is_valid():
+            contact_form.save()
+        return redirect('contactadd')

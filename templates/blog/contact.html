@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'style/pages/contact.css' %}">
 
 {% block title %}
 <title>Wabi-Sabi Contact</title>
@@ -7,24 +8,24 @@
 
 
 {% block content %}
+{% load crispy_forms_tags %}
+
 
 
 <div class="container">
 
     <div class="row">
-        <div class="col-md-12 mt-3 offset-md-4 text-center">
+        <div class="col-md-5 mt-3 offset-md-8 text-center">
             <h3>CONTACT US</h3>
 
-            <form method="POST" action="add">
+            <form method="POST" action="{% url 'contactadd' %}">
                 {% csrf_token %}
                 <!-- template variable -->
                 <div>
-                    <p>{{form.as_p}}</p>
+                    {{ contact_form | crispy }}
                 </div>
                 <div>
-                    <p>
-                        <button type="submit">submit</button>
-                    </p>
+                    <button type="submit" class="btn btn-signup btn-lg">Submit</button>
                 </div>
             </form>
         </div>

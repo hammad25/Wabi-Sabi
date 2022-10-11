@@ -13,6 +13,10 @@ class CommentForm(forms.ModelForm):
 
 
 class ContactForm(forms.ModelForm):
+
+    message = forms.CharField(widget=forms.Textarea(attrs={
+        'style':'height:80px;'}))
+
     class Meta:
         model = Contact
         fields = '__all__'

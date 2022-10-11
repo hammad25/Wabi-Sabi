@@ -1,7 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% load static %}
 
-{% load static %}
-<!-- <link rel="stylesheet" href="{% static 'style/pages/post.css' %}"> -->
+<link rel="stylesheet" href="{% static 'style/pages/post-detail.css' %}">
 
 {% block content %}
 {% load crispy_forms_tags %}
@@ -54,10 +53,10 @@
                 <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
                     {% csrf_token %}
                     {% if post_is_liked %}
-                    <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn btn-info"><i
+                    <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i
                             class="fas fa-heart"></i></button>
                     {% else %}
-                    <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn btn-info"><i
+                    <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i
                             class="far fa-heart"></i></button>
                     {% endif %}
 
@@ -99,40 +98,52 @@
                         </span>
 
                     </p>
+
                     <!-- The body of the comment goes before the | -->
                     <p>
                         {{ comment.body | linebreaks }}
                     </p>
-                    {% if user.is_authenticated %}
-                    {% if comment.name == user.username %}
-                    <button type="button" class="btn  btn-sm float-sm-end">Edit</button>
-                    <button type="button" class="btn  btn-sm float-sm-end">Delete</button>
-                    {% endif %}
+                    {% if comment.name == user %}
+
+                    <!-- Edit button -->
+                    <a href="" class="btn btn-sm float-sm-end">Edit</a>
+
+                    <!-- Delete button -->
+                    <a href="{% url 'delete_comment_confirm' %}" class="btn  btn-sm float-sm-end">Delete</a>
+
                     {% endif %}
                 </div>
-                <!-- Our for loop ends here -->
+
                 {% endfor %}
             </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-6 mb-4 justify-content-center  mx-auto   mt-3">
-            {% if user.is_authenticated %}
-            <h5 class="text-mute">write a comment:</h5>
-            <p>Posting as: {{ user.username }}</p>
-            <form method="POST" style="margin-top: 1.3em;">
-                {{ comment_form | crispy }}
-                {% csrf_token %}
-                <button type="submit" class="btn btn-signup btn-lg">Publish</button>
-            </form>
-            {% else %}
-            <h5> To leave a comment, you must be a member:</h5>
-            <a class="link-primary text-decoration-underline" href="{% url 'account_signup' %}">Sign In</a>
-            {% endif %}
 
-        </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-6 mb-4 justify-content-center  mx-auto   mt-3">
+        {% if user.is_authenticated %}
+        <h5 class="text-mute">write a comment:</h5>
+        <p>Posting as: {{ user.username }}</p>
+        <form method="POST" style="margin-top: 1.3em;">
+            {{ comment_form | crispy }}
+            {% csrf_token %}
+            <button type="submit" class="btn btn-signup btn-lg">Publish</button>
+        </form>
+        {% else %}
+        <h5> To leave a comment, you must be a member:</h5>
+        <a class="link-primary text-decoration-underline" href="{% url 'account_signup' %}">Sign In</a>
+        {% endif %}
+
     </div>
+</div>
+
+
+
+
 
 </div>
 {% endblock %}

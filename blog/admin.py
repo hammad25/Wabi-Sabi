@@ -20,6 +20,7 @@ class CommentAdmin(admin.ModelAdmin):
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'last_name', 'email')
+    list_filter = ('created_on',)
 
 admin.site.register(Category)
 
