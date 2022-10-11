@@ -19,8 +19,7 @@
     <div class="row">
         <div class="col-md-5 mt-3 offset-md-8 text-center">
             <h3>CONTACT US</h3>
-
-            <form method="POST" action="{% url 'contactadd' %}">
+            <form method="POST" action="{% url 'contact' %}">
                 {% csrf_token %}
                 <!-- template variable -->
                 <div>
