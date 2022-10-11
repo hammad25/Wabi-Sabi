@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views import generic, View
-from . forms import ContactForm, CommentForm
-from .models import Post, Comment, Contact
+from .forms import ContactForm, CommentForm, UserProfileForm
+from .models import Post, Comment, Contact, UserProfile
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -69,8 +71,6 @@ def delete_comment(request, id, pk):
     comment = get_object_or_404(Comment,  )
 
 
-
-
 class PostLike(View):
     def post(self, request, slug):
         post = get_object_or_404(Post, slug=slug)
@@ -82,7 +82,19 @@ class PostLike(View):
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
+@login_required
+def profile(request):
+    '''Display and Edit user profile info'''
+    user_profile = get_object_or_404(UserProfile, user=request.user)
+    user = User.objects.get(username= request.user.username)
 
+    profile_form = UserProfileForm()
+    context = {
+        'profile_form':profile_form,
+        'user_profile':user_profile,
+    }
+
+    return render(request, 'blog/profile.html', context)
 
 def signup(register):
     return render(request, 'account/signup.html')

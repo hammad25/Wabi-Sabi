@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'style/pages/profile.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>Profile</title>
+{% endblock %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="container-fluid my-4">
+    <div class="row">
+        <div class="col">
+            <h2 class="text-center mx-auto mb-5">{{ request.user.username }}'s profile</h2>
+        </div>
+    </div>
+    <div class="row align-items-center position-relative">
+        <div class="col text-right mr-md-5 pr-0">
+            <!-- Profile image -->
+            {% if user_profile.image %}
+            <a href="{{ user_profile.image.url }}" target="_blank" aria-label="Link to view the profile picture.">
+                <img class="img-fluid profile-image mr-4" src="{{ user_profile.image.url }}" alt="profile picture">
+            </a>
+            {% else %}
+            <img class="img-fluid profile-image mr-4" src="{% static 'images/default-image.jpeg' %}"
+                alt="default profile picture">
+            {% endif %}
+            <!-- Make profile public trigger input -->
+            <form>
+                <div>
+                    <input class="form-check-input" type="checkbox" id="make-profile-public-chekbox"
+                        name="make-profile-public-chekbox" data-toggle="modal" data-target="#make-profile-public-modal"
+                        {% if user_profile.make_public %} checked{% endif %}>
+                    <label class="form-check-label" for="make-profile-public-chekbox">
+                        {% if user_profile.make_public %}
+                        <small>make profile public</small>
+                        {% else %}
+                        <small>make profile private</small>
+                        {% endif %}
+                    </label>
+                </div>
+            </form>
+            <!-- Make profile public confirmation modal -->
+        </div>
+        <!-- Profile information -->
+        <div class="col pl-1 align-middle profile-info">
+            <p class="mb-1"><span class="text-muted small">Username: </span>{{ request.user.username }}</p>
+            <p class="mb-2"><span class="text-muted small">Email: </span>{{ request.user.email }}</p>
+            <p class="d-none d-md-block">
+                <span class="text-muted small">About me:</span><br />
+                {% if user_profile.about %}
+                {{ user_profile.about }}
+                {% else %}
+                <span class="ml-2">Tell us who you are ...</span>
+                {% endif %}
+            </p>
+        </div>
+        <div class="col-12 d-block d-md-none mt-3 profile-info">
+            <p>
+                <span class="text-muted small">About me:</span><br />
+                {% if user_profile.about %}
+                {{ user_profile.about }}
+                {% else %}
+                <span class="ml-2">Tell us who you are ...</span>
+                {% endif %}
+            </p>
+        </div>
+        <div class="edit-profile-btn mr-md-2">
+            <!-- Button trigger EDIT profile modal -->
+            <button type="button" class="btn profile-info" data-toggle="modal" data-target="#edit-profile-modal"
+                title="Edit profile">
+                <i class="fa-regular fa-pen-to-square"></i>
+                <span class="sr-only">Edit your profile information</span>
+            </button>
+            <span>|</span>
+            <!-- Button trigger DELETE profile modal -->
+            <button type="button" class="btn red profile-info" data-toggle="modal" data-target="#delete-profile-modal"
+                title="Delete profile">
+                <i class="fa-regular fa-trash-can"></i>
+                <span class="sr-only">Delete your profile</span>
+            </button>
+        </div>
+        <!-- EDIT profile modal -->
+
+
+    </div>
+    <div class="row">
+    </div>
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<!-- update file name -->
+<script>
+    /* jshint esversion: 8 */
+    $('#new-image').change(function () {
+        var file = $('#new-image')[0].files[0];
+        $('#filename').text(`Image will be set to: ${file.name}`);
+    });
+</script>
+{% endblock %}

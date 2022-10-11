@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
-<!-- <link rel="stylesheet" href="{% static 'style/pages/articles.css' %}"> -->
+{% block styles %}
+<link rel="stylesheet" href="{% static 'style/pages/articles.css' %}">
+{% endblock %}
 
 {% block title %}
 <title>Wabi-Sabi blog

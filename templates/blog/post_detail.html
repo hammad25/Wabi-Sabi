@@ -1,6 +1,7 @@
 {% extends 'base.html' %} {% load static %}
-
+{% block styles %}
 <link rel="stylesheet" href="{% static 'style/pages/post-detail.css' %}">
+{% endblock %}
 
 {% block content %}
 {% load crispy_forms_tags %}
@@ -53,8 +54,10 @@
                 <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
                     {% csrf_token %}
                     {% if post_is_liked %}
-                    <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i
-                            class="fas fa-heart"></i></button>
+                    <a href="">
+                        <button type="submit" name="blogpost_id" class="pe-auto" value="{{post.slug}}"
+                            class="btn-like"><i class="fas fa-heart"></i></button>
+                    </a>
                     {% else %}
                     <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i
                             class="far fa-heart"></i></button>
