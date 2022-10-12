@@ -14,6 +14,7 @@ urlpatterns = [
     path('about', views.about_view, name='about'),
     path('account/signup', views.signup, name='signip'),
     path('profile', views.profile, name='profile'),
+    path('delete_profile/', views.delete_profile, name='delete_profile'),
 
     # path('/accounts/login/', LoginView.as_view(name='blog/login.html')),
     # path('/accounts/logout/', LogoutView.as_view(name='blog/logout.html')),

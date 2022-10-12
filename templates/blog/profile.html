@@ -27,22 +27,6 @@
             <img class="img-fluid profile-image mr-4" src="{% static 'images/default-image.jpeg' %}"
                 alt="default profile picture">
             {% endif %}
-            <!-- Make profile public trigger input -->
-            <form>
-                <div>
-                    <input class="form-check-input" type="checkbox" id="make-profile-public-chekbox"
-                        name="make-profile-public-chekbox" data-toggle="modal" data-target="#make-profile-public-modal"
-                        {% if user_profile.make_public %} checked{% endif %}>
-                    <label class="form-check-label" for="make-profile-public-chekbox">
-                        {% if user_profile.make_public %}
-                        <small>make profile public</small>
-                        {% else %}
-                        <small>make profile private</small>
-                        {% endif %}
-                    </label>
-                </div>
-            </form>
-            <!-- Make profile public confirmation modal -->
         </div>
         <!-- Profile information -->
         <div class="col pl-1 align-middle profile-info">
@@ -114,6 +98,31 @@
                             <button type="submit" class="btn btn-primary">Update profile</button>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="delete-profile-modal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+            aria-labelledby="delete-profile-modal-label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title red" id="delete-profile-modal-label">Delete your profile</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        You are about to delete your profile.<br />
+                        This action is irreversible ...<br />
+                        Please confirm.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                        <form action="{% url 'delete_profile' %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary">Delete profile</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

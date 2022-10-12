@@ -88,6 +88,7 @@ def profile(request):
     user_profile = get_object_or_404(UserProfile, user=request.user)
     user = User.objects.get(username= request.user.username)
 
+
     if request.method == 'POST':
         # update user profile info
         profile_form = UserProfileForm(request.POST, request.FILES,
@@ -111,6 +112,18 @@ def profile(request):
     }
 
     return render(request, 'blog/profile.html', context)
+
+@login_required
+def delete_profile(request):
+    ''' Delete the user profile and the user '''
+
+    user = User.objects.get(username=request.user.username)
+
+    if request.method == 'POST':
+        user.delete()
+
+        messages.success(request, 'Your profile was deleted successfuly')
+        return redirect('home')
 
 def signup(register):
     return render(request, 'account/signup.html')
