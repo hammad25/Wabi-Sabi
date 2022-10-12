@@ -83,6 +83,41 @@
             </button>
         </div>
         <!-- EDIT profile modal -->
+        <div class="modal fade" id="edit-profile-modal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+            aria-labelledby="edit-profile-modal-label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="edit-profile-modal-label">Edit your profile</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="{% url 'profile' %}" method="POST" enctype="multipart/form-data">
+                        <div class="modal-body text-left">
+                            {% csrf_token %}
+                            <input class="form-control mb-2" type="text" id="username" name="username"
+                                placeholder="Username" value="{{ request.user.username }}">
+                            <input class="form-control mb-2" type="text" id="email" name="email" placeholder="Email"
+                                value="{{ request.user.email }}">
+                            {% for field in profile_form %}
+                            <!-- display field as crispy except for the custom widget for image  -->
+                            {% if field.name != 'image' %}
+                            {{ field | as_crispy_field }}
+                            {% else %}
+                            {{ field }}
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Update profile</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
 
 
     </div>

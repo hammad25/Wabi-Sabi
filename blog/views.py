@@ -88,7 +88,23 @@ def profile(request):
     user_profile = get_object_or_404(UserProfile, user=request.user)
     user = User.objects.get(username= request.user.username)
 
-    profile_form = UserProfileForm()
+    if request.method == 'POST':
+        # update user profile info
+        profile_form = UserProfileForm(request.POST, request.FILES,
+                                         instance=user_profile)
+        if profile_form.is_valid():
+            profile_form.save()
+
+            # Update User info
+            user = User.objects.get(username=request.user.username)
+            username = request.POST['username']
+            email = request.POST['email']
+            user.username = username
+            user.email = email
+            user.save()
+
+
+    profile_form = UserProfileForm(instance=user_profile)
     context = {
         'profile_form':profile_form,
         'user_profile':user_profile,

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.sites',
+    'django.forms',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -52,6 +53,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'blog',
 ]
+
+FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 

@@ -9,7 +9,7 @@ class UserProfileForm(forms.ModelForm):
         model = UserProfile
         fields = ('image', 'about',)
 
-    # Replace the image field the the custom widget
+    # Replace the image field in the custom widget
     image = forms.ImageField(label='Image',
                              required=False,
                              widget=CustomClearableFileInput)
