@@ -6,9 +6,13 @@
 {% endblock %}
 
 {% block content %}
-<!-- <video src="{% static 'images/wabi-video.mp4' %}"></video> -->
-
-<p>
+<div class="col container-fluid">
+    <video id="myvideo" src="{% static 'images/wabi-sabi-landing-page.mp4' %}" loop autoplay></video>
+    <script>
+        document.getElementById('myvideo').play();
+    </script>
+</div>
+<!-- <p>
     <img class="card-img-top" src="{% static 'images/wabi-home.jpeg' %}" class="d-block w-100">
-</p>
+</p> -->
 {% endblock %}
