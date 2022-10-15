@@ -67,8 +67,15 @@ class PostDetail(View):
 def delete_comment_confirm(request):
     return render(request, 'blog/delete_comment_confirm.html')
 
-def delete_comment(request, id, pk):
-    comment = get_object_or_404(Comment,  )
+def delete_comment(request, pk):
+    if request.method == "POST":
+        slug = request.POST['postSlug']
+        comment = get_object_or_404(Comment, pk=pk)
+        try:
+            comment.delete()
+        except:
+            print("server error")
+    return redirect('post_detail', slug=slug)
 
 
 class PostLike(View):
