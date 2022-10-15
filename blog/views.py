@@ -66,7 +66,7 @@ class PostDetail(View):
 
 def update_comment(request, pk):
     slug = request.POST['slug']
-    commnetID = request.POST['edit_comment_id']
+    commentID = request.POST['edit_comment_id']
     commentBody = request.POST[str(commentID) + '_comment_edit_content']
     comment = get_object_or_404(Comment, pk=pk)
     comment.body = commentBody
