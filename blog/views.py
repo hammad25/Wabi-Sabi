@@ -64,8 +64,14 @@ class PostDetail(View):
             },
         )
 
-def delete_comment_confirm(request):
-    return render(request, 'blog/delete_comment_confirm.html')
+def update_comment(request, pk):
+    slug = request.POST['slug']
+    commnetID = request.POST['edit_comment_id']
+    commentBody = request.POST[str(commentID) + '_comment_edit_content']
+    comment = get_object_or_404(Comment, pk=pk)
+    comment.body = commentBody
+    comment.save(force_update=True)
+    return redirect('post_detail', slug=slug)
 
 def delete_comment(request, pk):
     if request.method == "POST":
