@@ -103,12 +103,25 @@ def favorites_list(request):
         {'new':new}
         )
 
-def favorites_blog(request, slug, id):
-    posts = get_object_or_404(FavoritePost, slug=slug, id=id)
-    if posts.user.filter(id=request.user.id).exists():
-        posts.user.remove(request.user)
+class PostList(generic.ListView):
+    model = FavoritePost
+    def get_queryset(self):
+        return FavoritePost.objects.filter(user=request.user)
+
+    queryset = FavoritePost.objects.filter()
+    paginate_by = 6
+    template_name = 'blog/favorite.html'
+
+
+def favorites_blog(request, slug):
+    user_favposts = get_object_or_404(Post, slug=slug)
+    query = FavoritePost.objects.filter(post=user_favposts, user=request.user)
+    if not query:
+        favpost = FavoritePost(post=user_favposts, user=request.user)
+        favpost.save()
     else:
-        posts.user.add(request.user)
+        favpost.delete()
+
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 @login_required

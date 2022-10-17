@@ -114,6 +114,11 @@ h1 {
     font-weight: bold;
 }
 
+.join:hover {
+    background-color: black;
+    color: aliceblue;
+}
+
 /* footer*/
 .life {
     font-family: 'Noto Sans JP', sans-serif;
@@ -131,7 +136,10 @@ h1 {
     color: black;
     font-size: 25px;
     font-weight: 400;
-    letter-spacing: -29px;
+}
+
+.socials:hover {
+    color: rgb(84, 84, 84);
 }
 
 .join-small {
@@ -139,4 +147,10 @@ h1 {
     height: 30px;
     background-color: black;
     color: white;
+}
+
+.join-small:hover {
+    background-color: white;
+    color: black;
+    border: solid;
 }
