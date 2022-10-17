@@ -10,13 +10,17 @@ body {
     font-family: 'Didact Gothic', sans-serif;
 }
 
+h1 {
+    font-family: 'Bebas Neue', sans-serif;
+}
+
 .logo {
     font-family: 'Bebas Neue', sans-serif;
     float: left;
     text-transform: uppercase;
     letter-spacing: 5px;
     font-size: 50px;
-    padding: 12px 0px 5px 5px;
+    padding: 12px 0px 5px 0px;
     margin-left: 20px;
 
 }
@@ -37,4 +41,75 @@ body {
 .active {
     color: black;
     text-decoration: underline;
+}
+
+/* landing page*/
+.hero-video {
+    height: 750px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    color: white;
+    z-index: 2;
+}
+
+.hero-video video {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 750px;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 859px;
+    background: rgb(83, 83, 83);
+    mix-blend-mode: overlay;
+}
+
+.actioncall {
+    position: absolute;
+    top: 65%;
+    left: 53%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.live {
+    margin-top: 20px;
+    font-family: sans-serif;
+    font-weight: 200;
+    letter-spacing: 5px;
+}
+
+.wabi-sabi {
+    font-size: 163px;
+    font-weight: 900;
+    letter-spacing: 5px;
+    margin-top: -30px;
+}
+
+.prompt {
+    margin-left: 5px;
+    text-transform: uppercase;
+    margin-top: -32px;
+    font-weight: 200;
+    font-family: sans-serif;
+    letter-spacing: 5px;
+}
+
+.join {
+    margin-left: 200px;
+    margin-top: 20px;
+    width: 200px;
+    height: 50px;
+    border-radius: 30px;
+    letter-spacing: 4px;
+    font-weight: 400;
+    font-size: 20px;
+    font-weight: bold;
 }

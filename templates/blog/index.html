@@ -6,13 +6,49 @@
 {% endblock %}
 
 {% block content %}
-<div class="col container-fluid">
-    <video id="myvideo" src="{% static 'images/wabi-sabi-landing-page.mp4' %}" loop autoplay></video>
+<section class="hero-video">
+
+    <video id="myvideo" src="{% static 'images/wabi-sabi-landing-page.mp4' %}" loop autoplay>
+    </video>
     <script>
         document.getElementById('myvideo').play();
     </script>
-</div>
-<!-- <p>
-    <img class="card-img-top" src="{% static 'images/wabi-home.jpeg' %}" class="d-block w-100">
-</p> -->
+    </div>
+    <div class="overlay"></div>
+    <!-- <div class="container actioncall">
+        <div class="row mt-5">
+            <div class="col offset-sm-1 offset-md-2 offset-lg-4 mt-5 d-flex align-items-center justify-content-center">
+                <div class="text mt-5">
+                    <h1 class="live">LIVE</h1>
+                    <h1 class="wabi">WABI-SABI</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col offset-sm-1 offset-md-2 offset-lg-4 d-flex align-items-start justify-content-center">
+                <h3 class="ml-3">A way of life</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col d-flex align-items-start justify-content-center">
+                <a href=" {% url 'account_signup' %}"><button>
+                        Join now
+                    </button></a>
+            </div>
+        </div>
+    </div> -->
+    <div class="actioncall">
+        <h5 class="live">LIVE</h5>
+        <h1 class="wabi-sabi">WABI-SABI</h1>
+        <h5 class="prompt">a zin way of life</h5>
+        <a href="{% url 'account_login' %}"><button class="join">
+                subscribe
+            </button></a>
+    </div>
+
+
+
+
+</section>
+
 {% endblock %}
