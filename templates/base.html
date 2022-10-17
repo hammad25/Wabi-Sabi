@@ -79,17 +79,29 @@
 
 
     <!-- Footer -->
-    <footer class="container-fluid  mb-5">
-        <div class="row">
-            <div class="col-12 text-center">A Way of Life</div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12 col-md-4 text-center">Socials</div>
-            <div class=" col-sm-12 col-md-4 text-center">
-                <p class="mute">Live the feelings</p>
-                <a href=""><button>subscribe now</button></a>
+    <footer class="container-fluid">
+        <div class="row life">
+            <div class="col-12 text-center life">
+                新しい生き方を受け入れる
+                <br mt-5>
+                Embrace a new way of life
             </div>
-            <div class="col-sm-12 col-md-4 text-center">&copy; 2022 by HH</div>
+        </div>
+        <div class="row mt-2 mb-4">
+            <div class="col-sm-12 order-md-first  col-md-3 mt-3 text-center">
+                <a class="mr-5 socials" href="https://github.com/hammad25">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <span class=""></span>
+                <a class="socials" href="">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+            </div>
+            <div class=" col-sm-12 col-md-6  order-md-2 order-first text-center">
+                <p class="">Live the feelings</p>
+                <a href="{% url 'signup' %}"><button>subscribe now</button></a>
+            </div>
+            <div class="col-sm-12 col-md-3 text-center order-3">&copy; 2022 by HH</div>
         </div>
     </footer>
     <!-- Footer ends-->

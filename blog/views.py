@@ -155,7 +155,7 @@ def delete_profile(request):
         return redirect('home')
 
 def signup(register):
-    return render(request, 'account/signup.html')
+    return render(register, 'account/signup.html')
 
 def home(request):
     return render(request, 'blog/index.html')
