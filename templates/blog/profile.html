@@ -126,23 +126,64 @@
                 </div>
             </div>
         </div>
-
-
-
     </div>
-    <div class="row">
-    </div>
-</div>
-{% endblock %}
 
-{% block postloadjs %}
-{{ block.super }}
-<!-- update file name -->
-<script>
-    /* jshint esversion: 8 */
-    $('#new-image').change(function () {
-        var file = $('#new-image')[0].files[0];
-        $('#filename').text(`Image will be set to: ${file.name}`);
-    });
-</script>
-{% endblock %}
+    <div class="container">
+        <div class="row">
+            <!-- Blog Entries Column -->
+            <div class="col-12 mt-3 left">
+                <div class="row">
+                    {% for post in new %}
+                    <div class="col-md-4">
+                        <div class="card mb-2" style="width:24rem;">
+                            <a href="{% url 'post_detail' post.slug %}" class="post-link">
+                                <div class="image-container post-container">
+                                    <img class="card-img-top" style="height: 477px ;, width: 350pc;"
+                                        src="{{ post.featured_image.url }}">
+
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="heading mt-3 mb-3">
+                                        <p class="card-text text-muted h6">{{ post.created_on}}
+                                        </p>
+                                    </div>
+                                    <div class="heading text-left">
+                                        <h3 class="card-title" id="title">{{ post.title }}</h3>
+                                    </div>
+                                    <div>
+                                        <p>{{ post.excerpt}}</p>
+                                    </div>
+                                    <div>
+                                        <a href="" class="btn">remove</a>
+                                    </div>
+                                </div>
+
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% if forloop.counter|divisibleby:3 %}
+        </div>
+        <div class="row">
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+
+    {% endblock %}
+
+    {% block postloadjs %}
+    {{ block.super }}
+    <!-- update file name -->
+    <script>
+        /* jshint esversion: 8 */
+        $('#new-image').change(function () {
+            var file = $('#new-image')[0].files[0];
+            $('#filename').text(`Image will be set to: ${file.name}`);
+        });
+    </script>
+    {% endblock %}

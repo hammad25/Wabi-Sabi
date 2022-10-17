@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views import generic, View
 from .forms import ContactForm, CommentForm, UserProfileForm
-from .models import Post, Comment, Contact, UserProfile
+from .models import Post, Comment, Contact, UserProfile, FavoritePost
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -13,6 +13,7 @@ from django.contrib.auth.models import User
 class PostList(generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by('-created_on')
+    paginate_by = 6
     template_name = 'blog/articles.html'
 
 
@@ -95,6 +96,21 @@ class PostLike(View):
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
+def favorites_list(request):
+    new = FavoritePost.newmanager.filter(user=request.user)
+    return render(request,
+        'blog/profile.html',
+        {'new':new}
+        )
+
+def favorites_blog(request, slug, id):
+    posts = get_object_or_404(FavoritePost, slug=slug, id=id)
+    if posts.user.filter(id=request.user.id).exists():
+        posts.user.remove(request.user)
+    else:
+        posts.user.add(request.user)
+    return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
 @login_required
 def profile(request):
     '''Display and Edit user profile info'''
@@ -161,3 +177,7 @@ def contact_view(request):
         if contact_form.is_valid():
             contact_form.save()
         return redirect('contactadd')
+
+
+
+
