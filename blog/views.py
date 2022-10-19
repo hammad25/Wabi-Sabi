@@ -103,7 +103,7 @@ class PostLike(View):
 #         {'new':new}
 #         )
 
-# class PostList(generic.ListView):
+# class FavPostList(generic.ListView):
 #     model = FavoritePost
 #     def get_queryset(self):
 #         return FavoritePost.objects.filter(user=request.user)
@@ -129,7 +129,6 @@ def profile(request):
     '''Display and Edit user profile info'''
     user_profile = get_object_or_404(UserProfile, user=request.user)
     user = User.objects.get(username= request.user.username)
-
 
     if request.method == 'POST':
         # update user profile info

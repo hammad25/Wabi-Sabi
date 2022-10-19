@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'style/pages/about.css' %}">
+{% endblock %}
 
 {% block title %}
 <title>Wabi-Sabi About</title>
@@ -10,11 +13,28 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-md-12 mt-3 offset-md-5 ">
+        <div class="col-md-12 mt-3 text-center ">
             <h3>ABOUT US</h3>
-
         </div>
     </div>
+    <div class="row mb-5">
+        <div class="col-6 d-none d-md-block about-img ">
+            <img class="about-img" src="{% static 'images/about-us.jpeg' %}" alt="">
+        </div>
+        <div class="col-6">
+            <img class="wabi-img" src="{% static 'images/about.jpg' %}" alt="">
+            <div class="p-4 ml-2">
+                <h5 class="font-weight-bold about">
+                    Embrace the way of life. In every and all aspects of your life.
+                    Bring a sense of calm to the space you live in, the food you eat, the relationships you have.
+
+                </h5>
+                <h4 class="text-start mt-5">The journey begins now</h4>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 
-    {% endblock %}
+{% endblock %}

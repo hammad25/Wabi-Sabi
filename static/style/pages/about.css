@@ -1,0 +1,16 @@
+.about-img {
+    width: inherit;
+    margin-bottom: 10px;
+}
+
+.wabi-img {
+    width: inherit;
+    margin-bottom: 10px;
+}
+
+.about {
+    font-weight: 500;
+    letter-spacing: 1px;
+    word-spacing: 2px;
+    font-size: large;
+}
