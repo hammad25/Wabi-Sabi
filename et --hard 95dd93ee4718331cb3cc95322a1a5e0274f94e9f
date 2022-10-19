@@ -1,0 +1,11 @@
+[33mcommit d03132a44f611a26d002c513292cb19b46e84368[m[33m ([m[1;36mHEAD[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Hammad <hammad2091504@hotmail.com>
+Date:   Mon Oct 17 20:46:25 2022 +0000
+
+    Add button hover to home page
+
+[33mcommit 95dd93ee4718331cb3cc95322a1a5e0274f94e9f[m
+Author: Hammad <hammad2091504@hotmail.com>
+Date:   Mon Oct 17 17:36:18 2022 +0000
+
+    Add subscribe button to footer
