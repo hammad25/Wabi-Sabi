@@ -15,9 +15,11 @@
 
 
 <div class="container">
-
     <div class="row">
-        <div class="col-md-5 offset-md-7 mb-4 text-center">
+        <div class="col-6 d-none d-md-block">
+            <img class="contact-img" src="{% static 'images/contact.jpeg' %}" alt="">
+        </div>
+        <div class="col-md-5 offset-md-1 mb-4 text-center">
             <h3>CONTACT US</h3>
             <form method="POST" action="{% url 'contact' %}">
                 {% csrf_token %}
