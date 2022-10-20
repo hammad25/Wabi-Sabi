@@ -169,3 +169,10 @@ h1 {
     color: black;
     border: solid;
 }
+
+/* media queries for small screens */
+@media screen and (max-width:580px) {
+    .join {
+        margin-left: 63px;
+    }
+}
