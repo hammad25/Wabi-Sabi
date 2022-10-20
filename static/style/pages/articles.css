@@ -1,0 +1,12 @@
+.post-link {
+    color: black;
+    text-decoration: none;
+    background-color: transparent;
+    transition: transform .2s
+}
+
+.post-link:hover {
+    color: black;
+    text-decoration: none;
+    transform: scale(1.05);
+}
