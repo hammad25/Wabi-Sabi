@@ -25,6 +25,9 @@ class PostDetail(View):
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
+        is_favourite = False
+        if post.favourite.filter(id=self.request.user.id).exists():
+            is_favourite = True
     
         return render(
             request,
@@ -33,6 +36,7 @@ class PostDetail(View):
                 'post':post,
                 'comments':comments,
                 'liked':liked,
+                'is_favourite':is_favourite,
                 'comment_form': CommentForm()
             },
         )
@@ -43,6 +47,10 @@ class PostDetail(View):
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
+        
+        is_favourite = False
+        if post.favourite.filter(id=self.request.user.id).exists():
+            is_favourite = True
     
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
@@ -61,6 +69,7 @@ class PostDetail(View):
                 'post':post,
                 'comments':comments,
                 'liked':liked,
+                'is_favourite':is_favourite,
                 'comment_form': comment_form,
             },
         )
@@ -95,22 +104,16 @@ class PostLike(View):
         
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
+def favourite_post(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    if post.favourite.filter(id=request.user.id).exists():
+        post.favourite.remove(request.user)
+    else:
+        post.favourite.add(request.user)
+    
+    return redirect('post_detail', slug=slug)
 
-# def favorites_list(request):
-#     new = FavoritePost.newmanager.filter(user=request.user)
-#     return render(request,
-#         'blog/profile.html',
-#         {'new':new}
-#         )
 
-# class FavPostList(generic.ListView):
-#     model = FavoritePost
-#     def get_queryset(self):
-#         return FavoritePost.objects.filter(user=request.user)
-
-#     queryset = FavoritePost.objects.filter()
-#     paginate_by = 6
-#     template_name = 'blog/favorite.html'
 
 
 # def favorites_blog(request, slug):

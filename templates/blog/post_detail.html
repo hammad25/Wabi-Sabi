@@ -49,22 +49,33 @@
 
     <div class="row">
         <div class="col-1">
-            {% if user.is_authenticated %}
-            <strong class="text-secondary">
-                <a href="{% url 'profile'  %}">
-                    <button type="" name="" value="" class=""><i class="fa-regular fa-bookmark"></i></button>
-                </a></strong>
-            {% else %}
-            <i class="fa-regular fa-bookmark"></i>
-            {% endif %}
+            <strong>
+                {% if user.is_authenticated %}
+                <form class="d-inline" action="{% url 'favourite_post' post.slug %}" method="POST">
+                    {% csrf_token %}
+                    {% if is_favourite %}
+                    <a href="">
+                        <button type="submit" name="blogpost_id" class="pe-auto" value="{{post.slug}}"
+                            class="btn-like"><i class="fa-solid fa-bookmark"></i></button>
+                    </a>
+                    {% else %}
+                    <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like">
+                        <i class="fa-regular fa-bookmark"></i></button>
+                    {% endif %}
+                </form>
 
+                {% else %}
+                <span class="text-secondary"><i class="fa-regular fa-bookmark"></i></span>
+                {% endif %}
+
+            </strong>
         </div>
         <div class="col-1">
             <strong>
                 {% if user.is_authenticated %}
                 <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
                     {% csrf_token %}
-                    {% if post_is_liked %}
+                    {% if liked %}
                     <a href="">
                         <button type="submit" name="blogpost_id" class="pe-auto" value="{{post.slug}}"
                             class="btn-like"><i class="fa-solid fa-heart"></i></button>
