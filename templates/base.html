@@ -55,12 +55,17 @@
             </ul>
             <ul class="nav navbar-nav mr-5 w-100 justify-content-end">
                 {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link site-menu-link" href="{% url 'profile' %}"
-                        aria-label="Link to profile page.">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span>Hi {{ request.user }}</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                        <a class="dropdown-item" href="{% url 'favourite_post_list' %}">Favourites</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'account_logout' %}">Log out</a>
+                    </div>
                 </li>
                 {% else %}
                 <li class="nav-item">

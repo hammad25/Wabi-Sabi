@@ -113,6 +113,14 @@ def favourite_post(request, slug):
     
     return redirect('post_detail', slug=slug)
 
+def favourite_post_list(request):
+    user = request.user
+    fav_post = user.favourite.all()
+    context = {
+        'fav_post':fav_post
+    }
+    return render(request, 'blog/favourite.html', context)
+
 
 
 
