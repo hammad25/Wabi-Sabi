@@ -8,6 +8,9 @@
 
 body {
     font-family: 'Didact Gothic', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 h1 {
@@ -175,4 +178,9 @@ h1 {
     .join {
         margin-left: 63px;
     }
+}
+
+footer {
+    margin-top: auto;
+
 }
