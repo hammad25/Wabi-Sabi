@@ -23,8 +23,7 @@ Live link can be found here [Deployed site]()
 * [**Technologies used**](#technologies-used)
 * [**Testing Phase**](#testing-phase)
 * [**Deployment**](#deployment)
-* [Honorable mentions](#honorable-mentions)
-* [Credits](#credits)
+* [**Credits**](#credits)
 
 ### **User Stories:**  
 ### **User Stories dropped as part of the agile process**
@@ -53,30 +52,79 @@ Live link can be found here [Deployed site]()
 - As a Site User I can open a dedicated social media page in order to view social media links from one location. 
 
 # **Planning Phase**
-## **Strategy** 
-### **Site Aims:**
-## **Scope**
-* UX efforts **must** address these:
-* UX efforts **should** accommodate these:
-
 
 ## **Structure**   
-![User Journeys flow chart](docs/flowcharts/user-Journey.jpg)
+Note: In production I decided to add a favourite field to Post and instead of using FavoritePost for favourite post functionality
+![User Journeys flow chart](./static/images/readme-images/Database-ER-diagram.png)
 
+## **Wireframes:**
+ <details><summary>CLICK TO OPEN/HIDE WIREFRAMES</summary>
+I used Balsamiq to create my wireframes.
 
-## **Skeleton**
-### **Wireframes:**
+## Home Page
+![Home Page Wireframe](./static/images/readme-images/home.png)
 
+## Home mobile
+![Home Page Wireframe](./static/images/readme-images/home-mobile.png)
+
+## Profile
+![Profile Devices Wireframe](./static/images/readme-images/profile.png)
+
+## Profile mobile
+![Account Registration Page](./static/images/readme-images/profile-mobile.png)
+
+## Contact
+![Contact Page](./static/images/readme-images/contact.png)
+
+## Articles
+![Profile Page](./static/images/readme-images/articles.png)
+
+</details>
 
 ### **Typography**:
+- For the color layout I decided to keep it very clean and chic, opting for the zin colors of black and white.
 
 # **Agile Development Process**
-You can find a summary of my agile process/learnings [here](AGILE.md).
-  
+## Agile Methodology
+## Overview
+For the development lifecycle of the project and planning, I used Github Porjetcs Kanban-style board to keep track of the issues as user stories, ideas and epics. I split user stories into different epics and tried to organize each user story underneath a specific epic. I used different labels to assign priority to issues as I worked though them. To simplific the workflow I split the flow of the process using sprints in line with an agile methodology. 
+
+Link to the board below:
+[Wabi Sabi Kanban Board](https://github.com/users/hammad25/projects/8)
+
+### Sprint 0 notes:
+- Before I started my sprint I laid the foundation first, I designed the  Database, wrote requirements that I wanted the project to have and finally created the wireframes
+![Pre sprint screenshot](./static/images/readme-images/sprint0.png)
+
+### Sprint 1 notes:
+- The first sprint was getting the initially deployment done, installing the right components and attaching the database to heroku. 
+- Creating the superuser to be able to get access to the django admin page to be able to set up the models
+![sprint 1 screenshot](./static/images/readme-images/sprint1.png)
+
+### Sprint 2 notes:
+- This sprint was getting in the prime functionality step by step. This included setting the functionality and and subsequent front end interactivity and styling
+![sprint 2 screenshot](./static/images/readme-images/sprint2.png)
+
+### Sprint 3 notes:
+- Sprint 3 was getting in the documentation.
+![sprint 3 screenshot](./static/images/readme-images/sprint3-could-have.png)
+
 # **Features**
-## **Site Navigation**
-### **Navbar**
-# **Future development**
+The Wabi Sabi website has many different features that make the project fun and interactive.
+- A navbar for site navigation and active link indications as to which page the user is on
+- Call to action buttons that guide the user to sign up
+- A Sign up page, where users can create an account
+- The articles page that features different blog post that jump up when hovered over them
+- The blog post have a comments section towards the end of the post where registered users can leave a comment
+- The blog post also have a bookmark button for users to favourite an article that saves within their profile favourites page
+- A like button to express positive affirment if they enjoy the content
+- A comments count showing how many comments an article currently has
+- Comment delete and update buttons
+- Profile edit page where users can edit info
+- Profile delete button to delete their profile from the database 
+
+## **Future features**
+- Search articles based on category type
 
 # **Testing Phase**
 I have included testing details during and post-development in a separate document called [TESTING.md](TESTING.md).
@@ -114,14 +162,7 @@ Oliver has been my reason for the change, and Analise my inspiration.
 # Credits
 * Balsamiq was used to create the wireframes.
 * GitHub was used to store my repository.
-* Flow chart symbol meaning taken from [conceptdraw.com](https://www.conceptdraw.com/How-To-Guide/flow-chart-symbols)
-* [Article on writing good user stories](https://www.industriallogic.com/blog/as-a-developer-is-not-a-user-story/)
-* Flow charts made using [draw.io](https://app.diagrams.net/)
-* [coolers.co](https://coolors.co/603f3f-a0acca-e4b67c-de9f13-000000) was used to generate 
-* The PageTitleViewMixin was taken from [djangoforge.com](https://www.djangoforge.dev/guides/page-titles/)
-* How to handle exceptions [studygyann.com](https://studygyaan.com/django/django-custom-404-error-template-page)
-[brandgradients.com](http://www.brandgradients.com/gold-gradient).
 * Fonts were taken from [Google Fonts](https://fonts.google.com/)
 * Images:
   * [upsplash.com](https://unsplash.com) 
-  *  [https://favpng.com](https://favpng.com/png_view/jaguar-jaguar-clip-art-vector-graphics-cartoon-illustration-png/yF62hEBm)
+
