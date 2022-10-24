@@ -32,6 +32,37 @@
 
 <body>
 
+    {% if messages %}
+    <div class="message-container">
+        {% for message in messages %}
+        {% with message.level as level %}
+        <!-- error level -->
+        {% if level == 40 %}
+        {% include 'includes/toasts/toasts_error.html' %}
+        <!-- warning level -->
+        {% elif level == 30 %}
+        {% include 'includes/toasts/toasts_warning.html' %}
+        <!-- success level -->
+        {% elif level == 25 %}
+        {% include 'includes/toasts/toasts_success.html' %}
+        <!-- info -->
+        {% else %}
+        {% include 'includes/toasts/toasts_info.html' %}
+
+        <script>
+            var toast = $A.get("e.force:showToast");
+            toast.setParams({
+                message: someMessage,
+                duration: 5000
+            });
+            toast.fire();
+        </script>
+        {% endif %}
+        {% endwith %}
+        {% endfor %}
+    </div>
+    {% endif %}
+
     <nav id="navbar" class="navbar navbar-light navbar-expand-md bg-faded justify-content-center">
         <a href="{% url 'home' %}" class="navbar-brand d-flex w-50 ml-5 logo">Wabi-Sabi</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -78,6 +109,8 @@
             </ul>
         </div>
     </nav>
+
+
 
     {% block content %}
     {% endblock %}
@@ -130,6 +163,13 @@
             atag.parent().addClass("active");
         });
     </script>
+    {% block postloadjs %}
+    <script>
+        // Display toasts messages
+        $('.toast').toast('show');
+    </script>
+
+    {% endblock %}
 </body>
 
 </html>

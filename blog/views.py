@@ -156,6 +156,10 @@ def profile(request):
             user.email = email
             user.save()
 
+            messages.success(request, 'Profile updated successfully')
+        else:
+            messages.error(request, 'something went wrong')
+
 
     profile_form = UserProfileForm(instance=user_profile)
     context = {

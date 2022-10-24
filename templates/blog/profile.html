@@ -16,8 +16,8 @@
             <h2 class="text-center mx-auto mb-5">{{ request.user.username }}'s profile</h2>
         </div>
     </div>
-    <div class="container row align-items-center position-relative">
-        <div class="col text-right mr-md-5 pr-0">
+    <div class="container row align-items-center justify-content-end">
+        <div class="col-3 text-right mr-md-5 pr-0">
             <!-- Profile image -->
             {% if user_profile.image %}
             <a href="{{ user_profile.image.url }}" target="_blank" aria-label="Link to view the profile picture.">
@@ -29,7 +29,8 @@
             {% endif %}
         </div>
         <!-- Profile information -->
-        <div class="col pl-1 align-middle profile-info">
+
+        <div class="col-3 pl-1 align-middle profile-info">
             <p class="mb-1"><span class="text-muted small">Username: </span>{{ request.user.username }}</p>
             <p class="mb-2"><span class="text-muted small">Email: </span>{{ request.user.email }}</p>
             <p class="d-none d-md-block">
@@ -41,7 +42,7 @@
                 {% endif %}
             </p>
         </div>
-        <div class="col-12 d-block d-md-none mt-3 profile-info">
+        <div class="col-3 d-block d-md-none mt-3 profile-info">
             <p>
                 <span class="text-muted small">About me:</span><br />
                 {% if user_profile.about %}
@@ -51,7 +52,7 @@
                 {% endif %}
             </p>
         </div>
-        <div class="edit-profile-btn mr-md-2">
+        <div class="col-3 edit-profile-btn mr-md-2">
             <!-- Button trigger EDIT profile modal -->
             <button type="button" class="btn profile-info" data-toggle="modal" data-target="#edit-profile-modal"
                 title="Edit profile">
@@ -66,6 +67,7 @@
                 <span class="sr-only">Delete your profile</span>
             </button>
         </div>
+
         <!-- EDIT profile modal -->
         <div class="modal fade" id="edit-profile-modal" data-backdrop="static" data-keyboard="false" tabindex="-1"
             aria-labelledby="edit-profile-modal-label" aria-hidden="true">
