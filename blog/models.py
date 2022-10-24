@@ -4,19 +4,28 @@ from cloudinary.models import CloudinaryField
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-STATUS = ((0, "Draft"),(1,"Published"))
-QUERY_TYPE = ((0,"Question"),(1,"Contribute"))
+STATUS = ((0, "Draft"), (1, "Published"))
+QUERY_TYPE = ((0, "Question"), (1, "Contribute"))
+
 
 class Category(models.Model):
+    """
+    A class to group posts according to category
+    """
     name = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('home')
+        return ('home')
+
 
 class Post(models.Model):
+    """
+    A class for the Blog Application that stores
+    variable names with field types for blog posts.
+    """
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
@@ -34,7 +43,6 @@ class Post(models.Model):
     favourite = models.ManyToManyField(
         User, related_name='favourite', blank=True)
 
-
     class Meta:
         ordering = ["-created_on"]
 
@@ -44,9 +52,15 @@ class Post(models.Model):
     def number_of_likes(self):
         return self.likes.count()
 
+
 class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
-    name = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    """
+    A class that handles the comments section within each post.
+    """
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, 
+                                related_name="comments")
+    name = models.ForeignKey(User, on_delete=models.CASCADE,
+                                null=True, blank=True)
     email = models.EmailField()
     body = models.TextField()
     created_on = models.DateField(auto_now_add=True)
@@ -57,12 +71,16 @@ class Comment(models.Model):
     def __str__(self):
         return f"Comment {self.body} by {self.name}"
 
+
 class Contact(models.Model):
+    """
+    A class that handles the contact information 
+    """
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     query_type = models.IntegerField(choices=QUERY_TYPE, default=0)
     email = models.EmailField()
-    message = models.TextField(default="Type your message her" )
+    message = models.TextField(default="Type your message her")
     created_on = models.DateField(auto_now_add=True)
 
     class Meta:

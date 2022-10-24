@@ -167,7 +167,7 @@
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                     <form action="{% url 'delete_comment' comment.id %}" method="POST">
                                         {% csrf_token %}
-                                        <input type="hidden" name="commentId" value="{{ comment.id }}" />
+                                        <input type="hidden" name="comment_id" value="{{ comment.id }}" />
                                         <input type="hidden" name="postSlug" value="{{ post.slug }}" />
                                         <input type="hidden" name="postId" value="{{ post.id }}" />
                                         <button type="submit" class="btn btn-danger mt-3">Delete</button>
@@ -208,8 +208,8 @@
 </div>
 
 <script type="text/javascript">
-    function showField(commentId) {
-        var type = document.getElementById(commentId + '_comment_edit_content').type;
+    function showField(comment_id) {
+        var type = document.getElementById(comment_id + '_comment_edit_content').type;
         if (type == "hidden") {
             type = "text";
             document.getElementById('comment_update_button').type = "submit";
@@ -217,7 +217,7 @@
             type = "hidden";
             document.getElementById('comment_update_button').type = type;
         }
-        document.getElementById(commentId + '_comment_edit_content').type = type;
+        document.getElementById(comment_id + '_comment_edit_content').type = type;
     }
 </script>
 {% endblock %}

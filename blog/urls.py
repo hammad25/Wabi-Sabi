@@ -1,12 +1,12 @@
 from django.urls import path
 from . import views
-from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('', views.home, name='home'),
     path('articles/', views.PostList.as_view(), name='articles'),
-    path('article/<slug:slug>', views.PostDetail.as_view(), name='post_detail'),
+    path('article/<slug:slug>', views.PostDetail.as_view(),
+                name='post_detail'),
     path('like/<slug:slug>', views.PostLike.as_view(), name='post_like'),
     path('favourite/<slug:slug>', views.favourite_post, name='favourite_post'),
     path('profile/fav', views.favourite_post_list, name='favourite_post_list'),

@@ -2,6 +2,7 @@ from django import forms
 from .models import Contact, Comment, UserProfile
 from .widgets import CustomClearableFileInput
 
+
 class UserProfileForm(forms.ModelForm):
     ''' Configure the profile form '''
     class Meta:
@@ -34,19 +35,25 @@ class UserProfileForm(forms.ModelForm):
 
 
 class CommentForm(forms.ModelForm):
+    """
+    Class to interactive with the comment form
+    """
     body = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
         'rows': 3
     }))
+
     class Meta:
         model = Comment
-        fields = ('body',) 
+        fields = ('body',)
 
 
 class ContactForm(forms.ModelForm):
-
+    """
+    Class to interact with the Comment form
+    """
     message = forms.CharField(widget=forms.Textarea(attrs={
-        'style':'height:80px;'}))
+        'style': 'height:80px;'}))
 
     class Meta:
         model = Contact
