@@ -1,13 +1,15 @@
 # **Wabi-Sabi**
-A blog on the art and life philosophy of Wabi Sabi. 
+A blog on the art and life philosophy of Wabi Sabi. As the world around us becomes ever so chaotic, this blog is a reminder to ourselves to adopt a more grounded and pure way of living. 
+
+This blog post aims to bring content on the philosophy of Wabi Sabi to the reader, and form and community where individuals can can interact with the content, each other and allow individulas to use a contact form to get in touch with me!
 
 ![Responsive screenshot showing site on different screen sizes](docs/images/responsive.JPG)
 
-[Deployed site]()
+Live link can be found here [Deployed site]()
 
 # **Table Of Contents**
 * [**Wabi-SAbi**](#Wabi-Sabi)
-* [**Purpose of the project**]
+* [**Purpose of the project**](#Purpose-of-the-project)
 * [**User Stories:**](#user-stories)
 * [**Surface**](#surface)
     * [**Color scheme:**](#color-scheme)
@@ -24,6 +26,32 @@ A blog on the art and life philosophy of Wabi Sabi.
 * [Honorable mentions](#honorable-mentions)
 * [Credits](#credits)
 
+### **User Stories:**  
+### **User Stories dropped as part of the agile process**
+* As an **Admin** I can...
+ - As a Site Admin I can open the admin page to create new content and publish them.
+ - As a Site Admin I can save posts as drafts in order to continue editing or post content at a later date. 
+  - As a Site Admin I have a post template in order to make new posts quickly under the same format.
+
+* As a **Registered User** I can... 
+- As a Registered User I can create a profile so that I can save key details 
+- As a Registered User I can Log in or Log out in order to keep my account secure.
+- As a Registered User I can like a post in order to show that I enjoyed the content.
+ - As a Registered User I can comment on blog posts in order to interact with other site users and the site owner. 
+ - As a Registered User I can Access a Profile Page in order to View/Update my information.
+ - As a Registered User I can Click an edit button in order to Update/correct/edit comments that I've made.
+ - As a Registered User I can click on a delete button to delete my comment
+ - As a Registered User I can click an edit button on my profile in order to Edit/change information about me.
+ - As a Site User I can delete my account in order to remove myself from the website database if I no longer use the site
+
+* As a **Site User** I can...
+- As a Site User I want to explore Wabi-sabi so I can implement it in my life
+- As a Site User I can view a selection of paginated posts so that I can decide which posts I want to read.
+- As a Site User I can click on a post in order to read the content from the post I selected.
+- As a Site User I can create an account in order to have access to features that I wouldn't have otherwise. 
+- As a Site User I can Contact the Site owner directly in order to ask questions or discuss opportunities. 
+- As a Site User I can open a dedicated social media page in order to view social media links from one location. 
+
 # **Planning Phase**
 ## **Strategy** 
 ### **Site Aims:**
@@ -31,28 +59,13 @@ A blog on the art and life philosophy of Wabi Sabi.
 * UX efforts **must** address these:
 * UX efforts **should** accommodate these:
 
-  
 
 ## **Structure**   
 ![User Journeys flow chart](docs/flowcharts/user-Journey.jpg)
-  
-### **User Stories:**  
-  
-* As an **Admin** I can...
-
-* As a **Registered User** I can... 
- 
-* As a **Site User** I can...
-  
-### **User Stories dropped as part of the agile process**
-* As a **Registered User** I can **create a profile** so that **I can save key details relevant**
 
 
 ## **Skeleton**
 ### **Wireframes:**
-
-## **Surface**
-### **Color scheme:**
 
 
 ### **Typography**:
