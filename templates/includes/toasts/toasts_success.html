@@ -1,4 +1,10 @@
-<div class="toast show" data-autohide="false">
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'style/pages/base.css' %}">
+{% endblock %}
+
+
+<div class="toast show message-container" data-autohide="false">
     <div class="toast-header">
         <strong class="me-auto">Done</strong>
         <button type="button" class="btn-close" data-bs-dismiss="toast"></button>

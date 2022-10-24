@@ -65,13 +65,13 @@ h1 {
 }
 
 .overlay {
-    position: sticky;
-    top: 109px;
+    position: absolute;
     left: 0;
     width: 100%;
     height: 750px;
     background: rgb(83, 83, 83);
     mix-blend-mode: overlay;
+
 }
 
 .actioncall {
@@ -194,5 +194,5 @@ footer {
     position: fixed;
     top: 60px;
     right: 18px;
-    z-index: 99999999999;
+    z-index: 3;
 }
