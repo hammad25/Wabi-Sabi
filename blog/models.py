@@ -57,7 +57,7 @@ class Comment(models.Model):
     """
     A class that handles the comments section within each post.
     """
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, 
+    post = models.ForeignKey(Post, on_delete=models.CASCADE,
                                 related_name="comments")
     name = models.ForeignKey(User, on_delete=models.CASCADE,
                                 null=True, blank=True)
@@ -74,7 +74,7 @@ class Comment(models.Model):
 
 class Contact(models.Model):
     """
-    A class that handles the contact information 
+    A class that handles the contact information
     """
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
@@ -124,4 +124,3 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
         UserProfile.objects.create(user=instance)
     # If existing user, just save
     instance.user_profile.save()
-

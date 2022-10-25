@@ -3,7 +3,9 @@ A blog on the art and life philosophy of Wabi Sabi. As the world around us becom
 
 This blog post aims to bring content on the philosophy of Wabi Sabi to the reader, and form and community where individuals can can interact with the content, each other and allow individulas to use a contact form to get in touch with me!
 
-![Responsive screenshot showing site on different screen sizes](docs/images/responsive.JPG)
+![Responsive screenshot showing site on different screen sizes](./static/images/responsive.png)
+
+
 
 Live link can be found here [Deployed site]()
 
@@ -11,17 +13,15 @@ Live link can be found here [Deployed site]()
 * [**Wabi-SAbi**](#Wabi-Sabi)
 * [**Purpose of the project**](#Purpose-of-the-project)
 * [**User Stories:**](#user-stories)
-* [**Surface**](#surface)
-    * [**Color scheme:**](#color-scheme)
-    * [**Typography**:](#typography)
-  * [**Skeleton**](#skeleton)
-    * [**Wireframes:**](#wireframes)
-    * [**Database Schema**](#database-schema)
+* [**Planning**](#surface)
+  * [**Database Schema**](#database-schema)
+  * [**Wireframes:**](#wireframes)
+  * [**Typography**:](#typography)
 * [**Agile Development Process**](#agile-development-process)
 * [**Features**](#features)
 * [**Future development**](#future-development)
-* [**Technologies used**](#technologies-used)
-* [**Testing Phase**](#testing-phase)
+* [**Technology**](#technologies-used)
+* [**Testing**](#testing-phase)
 * [**Deployment**](#deployment)
 * [**Credits**](#credits)
 
@@ -52,8 +52,7 @@ Live link can be found here [Deployed site]()
 - As a Site User I can open a dedicated social media page in order to view social media links from one location. 
 
 # **Planning Phase**
-
-## **Structure**   
+## **Database Schema**   
 Note: In production I decided to add a favourite field to Post and instead of using FavoritePost for favourite post functionality
 ![User Journeys flow chart](./static/images/readme-images/Database-ER-diagram.png)
 
@@ -61,27 +60,27 @@ Note: In production I decided to add a favourite field to Post and instead of us
  <details><summary>CLICK TO OPEN/HIDE WIREFRAMES</summary>
 I used Balsamiq to create my wireframes.
 
-## Home Page
+### Home Page
 ![Home Page Wireframe](./static/images/readme-images/home.png)
 
-## Home mobile
+### Home mobile
 ![Home Page Wireframe](./static/images/readme-images/home-mobile.png)
 
-## Profile
+### Profile
 ![Profile Devices Wireframe](./static/images/readme-images/profile.png)
 
-## Profile mobile
+### Profile mobile
 ![Account Registration Page](./static/images/readme-images/profile-mobile.png)
 
-## Contact
+### Contact
 ![Contact Page](./static/images/readme-images/contact.png)
 
-## Articles
+### Articles
 ![Profile Page](./static/images/readme-images/articles.png)
 
 </details>
 
-### **Typography**:
+## **Typography**:
 - For the color layout I decided to keep it very clean and chic, opting for the zin colors of black and white.
 
 # **Agile Development Process**
@@ -126,13 +125,6 @@ The Wabi Sabi website has many different features that make the project fun and 
 ## **Future features**
 - Search articles based on category type
 
-# **Testing Phase**
-I have included testing details during and post-development in a separate document called [TESTING.md](TESTING.md).
-
-# **Deployment**
-The final Deployed site can be found [here](https://jobs-a-gooden.herokuapp.com/)
-I have included details of my initial deployment in a separate document called [DEPLOYMENT.md](DEPLOYMENT.md).
-
 # **Technologies used**
 * Python
   * The packages installed for the is project can be found in [the requirements.txt](requirements.txt)
@@ -148,21 +140,26 @@ I have included details of my initial deployment in a separate document called [
 * CSS
   * Custom CSS used to style the page and make the appearance look a little more unique.
 * Javascript
-  * I have used Javascript throughout to manipulate the DOM and communicate to the backend to create, read, update, and delete data from the database.
 * Jinja
   * Jinja was the templating language used in order to implement the views.py logic and models.py data into a template so it could be displayed to the user.
-* Bootstrap 5.1.3
-  * Used to style HTML, CSS, minor javascript. The more I used this framework the most I realized retrospectively how it could have saved me writing several parts of the code I had already written.
+* Bootstrap
+  * Used to style HTML, CSS.
 * Font awesome
   * All icons throughout the page.
 
 
-Oliver has been my reason for the change, and Analise my inspiration. 
+# **Deployment**
+The final Deployed site can be found [here]() I have included details of the initial deploayment in [**DEPLOYMENT.md**](DEPLOYMENT.md)
+
+# **Testing Phase**
+I have included testing details during and post-development in a separate document called [TESTING.md](TESTING.md).
   
 # Credits
 * Balsamiq was used to create the wireframes.
+* LucidChart was used to create the data base
+* Bootstrap was placing the content 
+* The template for listing and looping the articles was inspired the "I think, therefore I blog" by Code Institute.
 * GitHub was used to store my repository.
 * Fonts were taken from [Google Fonts](https://fonts.google.com/)
-* Images:
-  * [upsplash.com](https://unsplash.com) 
+* Images were taken from multiple soucres on pintrest and google
 

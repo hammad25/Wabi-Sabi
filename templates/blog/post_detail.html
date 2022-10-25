@@ -9,9 +9,7 @@
 <div class="container">
     <div class="row g-0">
         <div class="col-md-6  text-left masthead-text">
-            <!-- Post author goes before the | the post's created date goes after -->
             <p class="post-subtitle">{{ post.created_on }}</p>
-            <!-- Post title goes in these h1 tags -->
         </div>
     </div>
     <div class="row">
@@ -22,7 +20,6 @@
     </div>
     <div class="row">
         <div class="d-none d-md-block col-md-6 masthead-image">
-            <!-- The featured image URL goes in the src attribute -->
             <img src=" {{ post.featured_image.url }}" width="100%">
         </div>
     </div>
@@ -32,8 +29,6 @@
     <div class="row">
         <div class="col  mb-4  mt-3 left  top">
             <div class="card-body">
-                <!-- The post content goes inside the card-text. -->
-                <!-- Use the | safe filter inside the template tags -->
                 <p class="card-text ">
                     {{ post.content | safe }}
                 </p>
@@ -109,22 +104,18 @@
             <h3 class="text-left">Comments</h3>
             <hr>
             <div class="card-body">
-                <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
                 {% for comment in comments %}
                 <div class="comments" style="padding: 10px;">
                     <p class="font-weight-bold">
-                        <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
                         {{ comment.name }}
                     </p>
                     <p>
                         <span class=" text-muted small">
-                            <!-- The comment's created date goes here -->
                             {{ comment.created_on }}
                         </span>
 
                     </p>
 
-                    <!-- The body of the comment goes before the | -->
                     <p>
                         {{ comment.body | linebreaks }}
                     </p>
