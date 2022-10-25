@@ -7,7 +7,7 @@ This blog post aims to bring content on the philosophy of Wabi Sabi to the reade
 
 
 
-Live link can be found here [Deployed site]()
+Live link can be found here [Deployed site](https://wabi-sabi-blog.herokuapp.com/)
 
 # **Table Of Contents**
 * [**Wabi-SAbi**](#Wabi-Sabi)
@@ -149,7 +149,7 @@ The Wabi Sabi website has many different features that make the project fun and 
 
 
 # **Deployment**
-The final Deployed site can be found [here]() I have included details of the initial deploayment in [**DEPLOYMENT.md**](DEPLOYMENT.md)
+The final Deployed site can be found [here](https://wabi-sabi-blog.herokuapp.com/) I have included details of the initial deploayment in [**DEPLOYMENT.md**](DEPLOYMENT.md)
 
 # **Testing Phase**
 I have included testing details during and post-development in a separate document called [TESTING.md](TESTING.md).
